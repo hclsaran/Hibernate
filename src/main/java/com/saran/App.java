@@ -16,15 +16,16 @@ public class App
         Metadata meta=new MetadataSources(ssr).getMetadataBuilder().build();
         
         SessionFactory sf=meta.getSessionFactoryBuilder().build();
-        Session session=sf.openSession();
+        Session session=sf.openSession();//creating a new session
         
         Transaction t=session.beginTransaction();
         Product p1=new Product();
-        p1.setPrdId(3);p1.setPrdName("Chairs");p1.setPrdPrice(200);
-       // session.save(p1);
+        p1.setPrdId(1);p1.setPrdName("Laptop");p1.setPrdPrice(2000);
+        session.save(p1);
         Product p2=new Product();
-        p2.setPrdId(4);p2.setPrdName("Pillows");p2.setPrdPrice(30);
-        session.save(p1);session.save(p2);
+        p2.setPrdId(2);p2.setPrdName("Mouse");p2.setPrdPrice(30);
+        session.save(p2);
+        
         t.commit();
         sf.close();session.close();
         System.out.println("Done");

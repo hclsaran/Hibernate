@@ -3,7 +3,7 @@ package com.saran;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+//POJO
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
