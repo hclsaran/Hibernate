@@ -1,5 +1,5 @@
 package com.saran;
-
+//First Level Cache
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -17,18 +17,26 @@ public class App
         
         SessionFactory sf=meta.getSessionFactoryBuilder().build();
         Session session=sf.openSession();//creating a new session
+        Session session1=sf.openSession();//creating a new session
         
-        Transaction t=session.beginTransaction();
+        /*Transaction t=session.beginTransaction();
         Product p1=new Product();
-        p1.setPrdId(1);p1.setPrdName("Laptop");p1.setPrdPrice(2000);
+        p1.setPrdId(1);p1.setPrdName("IPhone");p1.setPrdPrice(2000);
         session.save(p1);
         Product p2=new Product();
-        p2.setPrdId(2);p2.setPrdName("Mouse");p2.setPrdPrice(30);
+        p2.setPrdId(2);p2.setPrdName("Andriod");p2.setPrdPrice(30);
         session.save(p2);
         
         t.commit();
-        sf.close();session.close();
-        System.out.println("Done");
+        */
+        //First Level Cache
+        Product p=(Product)session.load(Product.class, 1);
+        System.out.println(p);
+        
+        Product p1=(Product)session.load(Product.class, 1);
+        System.out.println(p1);
+              System.out.println("Done");
+              
         
     }
 }
